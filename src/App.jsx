@@ -1,11 +1,11 @@
 import React from "react";
 import { data } from "./topics/props/data";
-import UseStateComponent from "./topics/hooks/useState/UseStateComponent";
+import API_Example from "./topics/hooks/useEffect/API_Example";
 
 function App() {
   return (
     <div>
-      <UseStateComponent />
+      <API_Example />
     </div>
   );
 }
