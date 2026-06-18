@@ -1,11 +1,10 @@
 import React from "react";
-import { data } from "./topics/props/data";
-import API_Example from "./topics/hooks/useEffect/API_Example";
+import Input from "./topics/form-handling/Input";
 
 function App() {
   return (
     <div>
-      <API_Example />
+      <Input />
     </div>
   );
 }
