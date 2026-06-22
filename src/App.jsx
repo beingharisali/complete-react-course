@@ -1,10 +1,10 @@
 import React from "react";
-import Input from "./topics/form-handling/Input";
+import Multiple_Input from "./topics/form-handling/Multiple_Inputs";
 
 function App() {
   return (
     <div>
-      <Input />
+      <Multiple_Input />
     </div>
   );
 }

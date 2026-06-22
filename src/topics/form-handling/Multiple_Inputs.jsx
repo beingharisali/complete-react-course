@@ -1,51 +1,75 @@
 import React, { useState } from "react";
 import { Button, Form, Card } from "react-bootstrap";
 
-function Input() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function Multiple_Input() {
+  //   const [firstName, setFirstName] = useState("");
+  //   const [lastName, setLastName] = useState("");
+  //   const [email, setEmail] = useState("");
+  //   const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
   const [users, setUsers] = useState([]);
-  function handleFirstName(e) {
-    setFirstName(e.target.value);
+
+  function changeHandler(e) {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUser({ ...user, [name]: value });
   }
-  function handleLastName(e) {
-    setLastName(e.target.value);
-  }
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
+  //   function handleFirstName(e) {
+  //     setFirstName(e.target.value);
+  //   }
+  //   function handleLastName(e) {
+  //     setLastName(e.target.value);
+  //   }
+  //   function handleEmail(e) {
+  //     setEmail(e.target.value);
+  //   }
+  //   function handlePassword(e) {
+  //     setPassword(e.target.value);
+  //   }
+  //   function submitHandler(e) {
+  //     e.preventDefault();
+  //     const user = {
+  //       firstName,
+  //       lastName,
+  //       email,
+  //       password,
+  //     };
+  //     console.log("single user", user);
+  //     setUsers([...users, user]);
+  //     console.log("Overall users", users);
+  //     setFirstName("");
+  //     setLastName("");
+  //     setEmail("");
+  //     setPassword("");
+  //   }
   function submitHandler(e) {
     e.preventDefault();
-    const user = {
-      firstName,
-      lastName,
-      email,
-      password,
-    };
-    console.log("single user", user);
+    console.log(user);
     setUsers([...users, user]);
-    console.log("Overall users", users);
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
+    setUser({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+    });
   }
   return (
     <div className="container">
       <h1 className="text-center">Form Handling</h1>
-      <Form onSubmit={submitHandler} className="w-1/3 mx-auto">
+      <Form className="w-1/3 mx-auto" onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>First name</Form.Label>
           <Form.Control
             type="text"
             placeholder="John"
-            value={firstName}
-            onChange={handleFirstName}
+            value={user.firstName}
+            onChange={changeHandler}
+            name="firstName"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
@@ -53,8 +77,9 @@ function Input() {
           <Form.Control
             type="text"
             placeholder="Doe"
-            value={lastName}
-            onChange={handleLastName}
+            value={user.lastName}
+            onChange={changeHandler}
+            name="lastName"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
@@ -62,8 +87,9 @@ function Input() {
           <Form.Control
             type="email"
             placeholder="john@gmail.com"
-            value={email}
-            onChange={handleEmail}
+            value={user.email}
+            onChange={changeHandler}
+            name="email"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
@@ -71,10 +97,12 @@ function Input() {
           <Form.Control
             type="password"
             placeholder="********"
-            value={password}
-            onChange={handlePassword}
+            value={user.password}
+            onChange={changeHandler}
+            name="password"
           />
         </Form.Group>
+        <input type="file" />
         <Button variant="success" className="w-full" type="submit">
           Submit
         </Button>
@@ -98,4 +126,4 @@ function Input() {
   );
 }
 
-export default Input;
+export default Multiple_Input;
